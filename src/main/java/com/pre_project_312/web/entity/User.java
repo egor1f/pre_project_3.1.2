@@ -1,11 +1,16 @@
 package com.pre_project_312.web.entity;
 
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
 
 @Entity
 @Table(name="users", schema = "user")
@@ -16,6 +21,7 @@ public class User {
     private int id;
 
     @Column
+    @NotBlank
     @Size(min = 2, max = 40, message = "Invalid name")
     @Pattern(regexp = "^[A-Za-zА-Яа-яЁё]{2,40}$", message = "use correct value")
     private String name;
